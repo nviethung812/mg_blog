@@ -1,0 +1,30 @@
+
+<?php echo '<ul class="w3-ul">';
+foreach ($block->getPosts() as $post) {
+    $post = $post->getData();
+    $postUrl = $block->getPostUrl() . 'postId/' . $post['post_id'];
+    $image = $block->getImagePath();
+    $image .= ($post["thumbnail"]) ? $post['thumbnail'] : "default.png";
+    $tags = "";
+    if ($post["tags"]) {
+        $tags = "<em>Tags: ";
+        foreach ($post["tags"] as $tag) {
+            $tags .=  $tag["name"] . ', ';
+        }
+        $tags .= '</em>';
+    }
+
+    echo    '<li class="w3-row">
+              <a class="w3-margin-right w3-col" style="width:150px;height:150px;" href="' . $postUrl . '"><img src="' . $image . '" style="width:150px"></a>
+              <div class="w3-rest w3-margin-left">
+                <a href="' . $postUrl . '" style="text-decoration: none; cursor: pointer;"><h3 class="w3-large"><b>' . $post["name"] . '</b></h3></a>
+                <p>Publish Date: ' . date("M    -d-Y", strtotime($post["publish_date_from"])) . '</p>
+                <p><em>' . $post["short_description"] . '</em></p>
+                <p>' . $tags . '</p>
+              </div>
+            </li>';
+}
+echo '</ul>';
+if ($block->getPagerHtml()) : ?>
+    <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>

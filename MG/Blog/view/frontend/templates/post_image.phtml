@@ -1,0 +1,6 @@
+<?php
+$image = $block->getImagePath();
+$image .= ($block->getPostThumbnail()) ? $block->getPostThumbnail() : "default.png";
+?>
+
+<img src="<?= $image;?>" alt="post_thumbnail"/>

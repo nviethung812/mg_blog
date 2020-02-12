@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="MG_Blog::manage_blog" title="Manage Blog" sortOrder="10" >
+                    <resource id="MG_Blog::manage_post" title="Manage Post" sortOrder="10" >
+                        <resource id="MG_Blog::create_post" title="Create Post" sortOrder="1" />
+                        <resource id="MG_Blog::edit_post" title="Edit Post" sortOrder="2" />
+                        <resource id="MG_Blog::delete_post" title="Delete Post" sortOrder="3" />
+                        <resource id="MG_Blog::mass_update_post" title="Mass Update Post" sortOrder="4" />
+                        <resource id="MG_Blog::mass_delete_post" title="Mass Delete Post" sortOrder="5" />
+                    </resource>
+                    <resource id="MG_Blog::manage_category" title="Manage Category" sortOrder="10" >
+                        <resource id="MG_Blog::create_category" title="Create Category" sortOrder="1" />
+                        <resource id="MG_Blog::edit_category" title="Edit Category" sortOrder="2" />
+                        <resource id="MG_Blog::delete_category" title="Delete Category" sortOrder="3" />
+                        <resource id="MG_Blog::mass_update_category" title="Mass Update Category" sortOrder="4" />
+                        <resource id="MG_Blog::mass_delete_category" title="Mass Delete Category" sortOrder="5" />
+                    </resource>
+                    <resource id="MG_Blog::manage_tag" title="Manage Tag" sortOrder="10" >
+                        <resource id="MG_Blog::create_tag" title="Create Tag" sortOrder="1" />
+                        <resource id="MG_Blog::edit_tag" title="Edit Tag" sortOrder="2" />
+                        <resource id="MG_Blog::delete_tag" title="Delete Tag" sortOrder="3" />
+                        <resource id="MG_Blog::mass_update_tag" title="Mass Update Tag" sortOrder="4" />
+                        <resource id="MG_Blog::mass_delete_tag" title="Mass Delete Tag" sortOrder="5" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

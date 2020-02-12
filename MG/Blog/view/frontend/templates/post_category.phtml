@@ -1,0 +1,16 @@
+<div class="field required">
+    <label for="search" class="label"><h3>Search Blog</h3></label>
+    <div class="control">
+        <form action="<?= $block->getBlogUrl()?>" method="post">
+            <input type="text" name="keyword" id="search" placeholder="Search terms" title="" class="input-text" />
+        </form>
+    </div>
+</div>
+<br>
+<h3><a href="<?= $block->getBlogUrl();?>">Home</a></h3>
+<?php
+echo '<ul class="w3-ul">';
+foreach ($block->getCategories() as $category) {
+    echo '<li><a href="' . $block->getCategoryUrl() . $category["id"] . '">' . $category["name"] . '</a></li>';
+}
+echo '</ul>';

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MG_Blog::css/w3.css" rel="stylesheet" type="text/css"  />
+<!--        <title>Search result</title>-->
+    </head>
+    <body>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+        <referenceContainer name="sidebar.additional">
+            <block class="MG\Blog\Block\Category" name="blog.category" template="MG_Blog::post_category.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="content">
+            <block class="MG\Blog\Block\PostListing" name="blog.content" template="MG_Blog::post_listing.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

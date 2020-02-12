@@ -1,0 +1,45 @@
+
+<?php $post = $block->getPostData();?>
+<a href="<?= $block->getData("backUrl");?>">Back</a>
+<p>Publish Date: <?= date("M-d-Y", strtotime($post["publish_date_from"]));?></p>
+<?= "<p><em>Description: " . $post["description"] . "</em></p>"?>
+<?= "<p>" . $post["content"] . "</p>";?>
+<br>
+<br>
+<div>
+    <?php
+    if ($block->getGallery()) {
+        echo '<h3>Gallery</h3>';
+
+        foreach ($block->getGallery() as $image) {
+            echo '<div class="w3-container w3-center w3-margin" style="display: inline-block;">
+                        <img class="w3-border" src="' . $block->getImagePath() . $image . '" alt="Image" style="width:190px;height:190px;">
+                    </div>';
+        }
+    }
+    ?>
+</div>
+<br>
+<br>
+<div>
+<?php
+    if ($block->getProducts()) {
+        echo '<h3>Related Products</h3>';
+
+        foreach ($block->getProducts() as $product) {
+            if ($product["price"] == 0) {
+                $price = '.';
+            } else {
+                $price = $product["price"] . " đ";
+            }
+            echo '<div class="w3-card-4 w3-margin" style="width:200px;height: 200px; display: inline-block;">
+                    <div class="w3-container w3-center">
+                      <h5>' . $product["name"] . '</h5>
+                      <a style="" href="' . $product["url"] . '"><img src="' . $product["thumbnail"] . '" alt="Avatar" style="width:150px;height:110px;"></a>
+                      <h6>' . $price . '</h6>
+                    </div>
+                  </div>';
+        }
+    }
+?>
+</div>

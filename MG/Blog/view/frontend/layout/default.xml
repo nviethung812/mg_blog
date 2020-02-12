@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+    <referenceBlock name="header.links">
+        <block class="Magento\Framework\View\Element\Html\Link" name="new.link" after="register-link">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="false">Blog</argument>
+                <argument name="path" xsi:type="string" translate="false">mg_blog/blog/listing</argument>
+            </arguments>
+        </block>
+    </referenceBlock>
+</body>
+</page>

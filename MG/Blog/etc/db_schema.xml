@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sosc_blog_post" resource="default" engine="innodb" comment="Blog Post">
+        <!-- identity: unique -->
+        <column xsi:type="int" name="post_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Post ID"/>
+        <column xsi:type="varchar" name="name" nullable="false"  length="255" comment="Post Name"/>
+        <column xsi:type="mediumtext" name="short_description" nullable="true" comment="Short Description"/>
+        <column xsi:type="text" name="content" nullable="false" comment="Post Content"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Post Description"/>
+        <column xsi:type="int" name="status" nullable="false" comment="Post Status"/>
+        <column xsi:type="text" name="url_key" nullable="false" comment="Post Url Key"/>
+        <column xsi:type="timestamp" name="publish_date_from" nullable="false" default="CURRENT_TIMESTAMP" comment="Post Publish Time"/>
+        <column xsi:type="timestamp" name="publish_date_to" nullable="false" default="CURRENT_TIMESTAMP" comment="Post Un-publish Time"/>
+        <column xsi:type="timestamp" name="creation_time" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Post Create Time"/>
+        <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Post Modify Time"/>
+        <column xsi:type="varchar" name="thumbnail" nullable="false" length="255" comment="Post Thumbnail"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="post_id"/>
+        </constraint>
+
+        <index referenceId="SOSC_BLOG_POST_FULLTEXT_NAME" indexType="fulltext">
+            <column name="name"/>
+        </index>
+    </table>
+
+    <table name="sosc_blog_category" resource="default" engine="innodb" comment="Blog Category">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Category ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Category Name"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <index referenceId="SOSC_BLOG_CATEGORY_FULLTEXT_NAME" indexType="fulltext">
+            <column name="name"/>
+        </index>
+    </table>
+
+    <table name="sosc_blog_post_category" resource="default" engine="innodb" comment="Blog Link Category">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Link ID"/>
+        <column xsi:type="int" name="post_id" nullable="false" comment="Post ID"/>
+        <column xsi:type="int" name="category_id" nullable="false" comment="Category ID"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="sosc_blog_post_product" resource="default" engine="innodb" comment="Blog Link Product">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Link ID"/>
+        <column xsi:type="int" name="post_id" nullable="false" comment="Post ID"/>
+        <column xsi:type="int" name="product_id" nullable="false" comment="Product ID"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="sosc_blog_tag" resource="default" engine="innodb" comment="Blog Tag">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Tag ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Tag Name"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+
+        <index referenceId="SOSC_BLOG_TAG_FULLTEXT_NAME" indexType="fulltext">
+            <column name="name"/>
+        </index>
+    </table>
+
+    <table name="sosc_blog_post_tag" resource="default" engine="innodb" comment="Blog Link Tag">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Link ID"/>
+        <column xsi:type="int" name="post_id" nullable="false" comment="Post ID"/>
+        <column xsi:type="int" name="tag_id" nullable="false" comment="Tag ID"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="sosc_blog_image" resource="default" engine="innodb" comment="Blog Post">
+        <column xsi:type="int" name="image_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Post ID"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Image Name"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="image_id"/>
+        </constraint>
+    </table>
+
+    <table name="sosc_blog_post_image" resource="default" engine="innodb" comment="Blog Image">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Link ID"/>
+        <column xsi:type="int" name="post_id" nullable="false" comment="Post ID"/>
+        <column xsi:type="text" name="image_name" nullable="false" comment="Image Name"/>
+        <column xsi:type="int" name="image_size" unsigned="true" nullable="false" comment="Image Size"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+
+    <table name="eav_entity" resource="default" engine="innodb">
+        <column xsi:type="int" name="test" padding="10" unsigned="true" nullable="true" comment="Test column"/>
+    </table>
+
+</schema>
